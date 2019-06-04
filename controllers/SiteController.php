@@ -20,10 +20,15 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['logout', 'prize'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['prize'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -62,6 +67,16 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+    /**
+     * Displays prize-page.
+     *
+     * @return string
+     */
+    public function actionPrize()
+    {
+        return $this->render('prize');
     }
 
     /**
