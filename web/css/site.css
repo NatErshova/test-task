@@ -113,3 +113,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.modal-popup .modal-dialog {
+    padding-top: 100px;
+}
+
+.modal-popup .modal-body {
+    position: relative;
+    padding: 60px 15px;
+    text-align: center;
+    background: #c0c0c0;
+}
