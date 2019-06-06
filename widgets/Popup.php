@@ -28,12 +28,16 @@ class Popup extends Widget
                     }
                 }
                 $text = $prize->val . ' rub';
+                $id = $prize->id;
+                $alias = 'money';
                 break;
             case 2:
                 $count = Points::find()->count();
                 $id = random_int(1, $count);
                 $prize = Points::findById($id);
                 $text = $prize->val  . ' points';
+                $id = $prize->id;
+                $alias = 'points';
                 break;
             case 3:
                 $count = Stuff::find()->count();
@@ -48,8 +52,10 @@ class Popup extends Widget
                     }
                 }
                 $text = $prize->val;
+                $id = $prize->id;
+                $alias = 'stuff';
                 break;
         }
-        return $this->render('popup', ['text' => $text]);
+        return $this->render('popup', ['text' => $text, 'alias' => $alias, 'id' => $id]);
     }
 }

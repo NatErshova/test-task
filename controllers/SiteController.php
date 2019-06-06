@@ -79,6 +79,21 @@ class SiteController extends Controller
         return $this->render('prize');
     }
 
+    public function actionMoney()
+    {
+        return $this->render('money');
+    }
+
+    public function actionPoints()
+    {
+        return $this->render('points');
+    }
+
+    public function actionStuff()
+    {
+        return $this->render('stuff');
+    }
+
     /**
      * Login action.
      *
