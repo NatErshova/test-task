@@ -79,6 +79,7 @@ class SiteController extends Controller
         ];
     }
 
+    // Главная страница, где предлагаем поучаствовать в лотерее
     public function actionIndex()
     {
         return $this->render('index');
@@ -90,8 +91,8 @@ class SiteController extends Controller
         return $this->render('prize');
     }
 
-    // Рандомно выбираем тип приза
-    public function actionRandom()
+    // Рандомно выбираем тип приза и отображаем результат
+    public function actionWin()
     {
         $category = random_int(1, 3);
         switch ($category) {
@@ -106,7 +107,7 @@ class SiteController extends Controller
                 break;
         }
 
-        return $this->redirect(['win']);
+        return $this->render('win', ['category' => $category, 'prize' => $prize]);
     }
 
     // Рандомный выбор денежной суммы из имеющихся в наличии
