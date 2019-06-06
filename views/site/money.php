@@ -22,6 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
+        <?= $form->field($model, 'email')->textInput() ?>
+
         <?= $form->field($model, 'bank_account')->textInput() ?>
 
         <?= Html::activeHiddenInput($model, 'id', ['value' => $id]); ?>

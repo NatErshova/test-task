@@ -14,6 +14,7 @@ use yii\base\Model;
 class MoneyForm extends Model
 {
     public $username;
+    public $email;
     public $bank_account;
     public $id;
 
@@ -26,6 +27,7 @@ class MoneyForm extends Model
         return [
             // username and password are both required
             [['username', 'bank_account'], 'required'],
+            [['email'], 'email'],
         ];
     }
 }
