@@ -8,7 +8,9 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\ContactForm;
+use app\models\MoneyForm;
+use app\models\PointsForm;
+use app\models\StuffForm;
 
 class SiteController extends Controller
 {
@@ -81,17 +83,26 @@ class SiteController extends Controller
 
     public function actionMoney()
     {
-        return $this->render('money');
+        $model = new MoneyForm();
+        return $this->render('money', [
+            'model' => $model,
+        ]);
     }
 
     public function actionPoints()
     {
-        return $this->render('points');
+        $model = new PointsForm();
+        return $this->render('points', [
+            'model' => $model,
+        ]);
     }
 
     public function actionStuff()
     {
-        return $this->render('stuff');
+        $model = new StuffForm();
+        return $this->render('stuff', [
+            'model' => $model,
+        ]);
     }
 
     /**
