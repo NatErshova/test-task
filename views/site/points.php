@@ -9,7 +9,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="site-index">
     <div class="jumbotron">
         <h1>Congratulations!</h1>
-            <p class="lead">You can take points.</p>
+            <p class="lead">You can take points. Please enter information</p>
     </div>
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
