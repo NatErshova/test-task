@@ -22,7 +22,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'prize'],
+                'only' => ['logout', 'prize', 'money', 'points', 'stuff'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -31,6 +31,21 @@ class SiteController extends Controller
                     ],
                     [
                         'actions' => ['prize'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['money'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['points'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['stuff'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
