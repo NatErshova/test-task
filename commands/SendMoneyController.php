@@ -16,13 +16,13 @@ class SendMoneyController extends Controller
 
         if ($not_send) {
             foreach ($not_send as $value) {
-                $this->sendToBank($value->description, $value->amt, $value->user_name);
+                $this->sendToBank($value->description, $value->val, $value->user_name);
             }
         }
     }
 
     // Прототип отправки денежных призов
-    protected function sendToBank($description, $amt, $user_name) {
+    protected function sendToBank($description, $val, $user_name) {
         throw new \Exception("Bad connection with bank");
     }
 }
