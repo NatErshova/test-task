@@ -12,6 +12,8 @@ use app\models\MoneyForm;
 use app\models\PointsForm;
 use app\models\StuffForm;
 use app\models\Money;
+use app\models\Points;
+use app\models\Stuff;
 
 class SiteController extends Controller
 {
@@ -77,24 +79,77 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
     public function actionIndex()
     {
         return $this->render('index');
     }
 
-    /**
-     * Displays prize-page.
-     *
-     * @return string
-     */
+    // Страница, на которой начинается розыгрыш приза
     public function actionPrize()
     {
         return $this->render('prize');
+    }
+
+    // Рандомно выбираем тип приза
+    public function actionRandom()
+    {
+        $category = random_int(1, 3);
+        switch ($category) {
+            case 1:
+                $prize = $this->moneyRandom();
+                break;
+            case 2:
+                $prize = $this->pointsRandom();
+                break;
+            case 3:
+                $prize = $this->stuffRandom();
+                break;
+        }
+
+        return $this->redirect(['win']);
+    }
+
+    // Рандомный выбор денежной суммы из имеющихся в наличии
+    protected function moneyRandom()
+    {
+        $moneyCount = Money::find()->count();
+        $id = random_int(1, $moneyCount);
+        $money = Money::findOne($id);
+        if ($money->amt > 0) {
+            // уменьшаем количество доступных денежных сумм такой стоимости и сохраняем обновленное количество
+            $money->amt = $money->amt - 1;
+            $money->save();
+        } else {
+            // если попалась сумма, которую уже больше не разыгрываем, то ищем новую сумму заново
+            $money = $this->moneyRandom();
+        }
+        return $money;
+    }
+
+    // Рандомный выбор баллов лояльности
+    protected function pointsRandom()
+    {
+        $pointsCount = Points::find()->count();
+        $id = random_int(1, $pointsCount);
+        $points = Points::findOne($id);
+        return $points;
+    }
+
+    // Рандомный выбор разыгрываемого предмета из имеющихся в наличии
+    protected function stuffRandom()
+    {
+        $stuffCount = Stuff::find()->count();
+        $id = random_int(1, $stuffCount);
+        $stuff = Stuff::findOne($id);
+        if ($stuff->amt > 0) {
+            // уменьшаем количество доступных вещей данного типа и сохраняем обновленное количество
+            $stuff->amt = $stuff->amt - 1;
+            $stuff->save();
+        } else {
+            // если попался предмет, которого больше нет в наличии, то ищем новый
+            $stuff = $this->stuffRandom();
+        }
+        return $stuff;
     }
 
     public function actionMoney($id)

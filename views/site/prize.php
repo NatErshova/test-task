@@ -1,5 +1,5 @@
 <?php
-use app\widgets\Popup;
+use yii\helpers\Url;
 
 $this->title = 'Congratulations';
 $this->params['breadcrumbs'][] = $this->title;
@@ -8,7 +8,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="jumbotron">
         <h1>Congratulations!</h1>
             <p class="lead">You can win a prize! Click the button.</p>
-            <button data-toggle="modal" data-target="#popup" class="btn btn-lg btn-success">GET A PRIZE</button>
+            <a class="btn btn-lg btn-success" href="<?=Url::to(['site/random'])?>">Get a prize</a>
     </div>
 </div>
-<?= Popup::widget() ?>

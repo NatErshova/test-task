@@ -10,11 +10,4 @@ class Points extends \yii\db\ActiveRecord
     {
         return "points";
     }
-
-    public static function findById($ID)
-    {
-        return parent::find()->andWhere([
-            'id' => $ID
-        ])->one();
-    }
 }

@@ -8,9 +8,7 @@ $this->title = 'Main';
         <h1>Good day!</h1>
         <p class="lead">Log in to win a prize.</p>
         <p>
-            <a class="btn btn-lg btn-success" href="<?=Url::to(['site/prize'])?>">
-                Get a prize
-           </a>
+            <a class="btn btn-lg btn-success" href="<?=Url::to(['site/prize'])?>">I want to get a prize!</a>
         </p>
     </div>
 </div>

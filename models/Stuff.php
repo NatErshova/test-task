@@ -10,11 +10,4 @@ class Stuff extends \yii\db\ActiveRecord
     {
         return "stuff";
     }
-
-    public static function findById($ID)
-    {
-        return parent::find()->andWhere([
-            'id' => $ID
-        ])->one();
-    }
 }
