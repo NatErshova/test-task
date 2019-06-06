@@ -3,13 +3,13 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Money';
+$this->title = 'Points';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
     <div class="jumbotron">
         <h1>Congratulations!</h1>
-            <p class="lead">You can take money. Please leave your details</p>
+            <p class="lead">You can take <?= $sum ?> points. Please enter information</p>
     </div>
     <?php $form = ActiveForm::begin([
         'id' => 'login-form',
@@ -24,16 +24,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'email')->textInput() ?>
 
-        <?= $form->field($model, 'bank_account')->textInput() ?>
-
-        <?= Html::activeHiddenInput($model, 'id', ['value' => $id]); ?>
-
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
-                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'submit-button']) ?>
+                <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
         </div>
-    <?php ActiveForm::end(); ?>
 
-    <a class="btn btn-lg btn-success" href="<?=Url::to(['site/convert-points', 'id' => $id])?>">I want to convert to points</a>
+    <?php ActiveForm::end(); ?>
 </div>

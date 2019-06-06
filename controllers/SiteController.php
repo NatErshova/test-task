@@ -11,6 +11,7 @@ use app\models\LoginForm;
 use app\models\MoneyForm;
 use app\models\PointsForm;
 use app\models\StuffForm;
+use app\models\Money;
 
 class SiteController extends Controller
 {
@@ -111,6 +112,17 @@ class SiteController extends Controller
         return $this->render('points', [
             'model' => $model,
             'id' => $id,
+        ]);
+    }
+
+    public function actionConvertPoints($id)
+    {
+        $model = new PointsForm();
+        $money = Money::findById($id);
+        $sum = $money->val * $money->coef;
+        return $this->render('convert-points', [
+            'model' => $model,
+            'sum' => $sum,
         ]);
     }
 
