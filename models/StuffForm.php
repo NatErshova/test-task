@@ -16,6 +16,7 @@ class StuffForm extends Model
     public $username;
     public $email;
     public $address;
+    public $id;
 
 
     /**

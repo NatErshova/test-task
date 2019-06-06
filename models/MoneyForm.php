@@ -15,6 +15,7 @@ class MoneyForm extends Model
 {
     public $username;
     public $bank_account;
+    public $id;
 
 
     /**

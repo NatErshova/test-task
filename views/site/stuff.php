@@ -3,7 +3,7 @@ use yii\helpers\Url;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
-$this->title = 'Money';
+$this->title = 'Stuff';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-index">
@@ -25,6 +25,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= $form->field($model, 'email')->textInput() ?>
 
         <?= $form->field($model, 'address')->textInput() ?>
+
+        <?= Html::activeHiddenInput($model, 'id', ['value' => $id]); ?>
 
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">

@@ -24,6 +24,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
         <?= $form->field($model, 'bank_account')->textInput() ?>
 
+        <?= Html::activeHiddenInput($model, 'id', ['value' => $id]); ?>
+
         <div class="form-group">
             <div class="col-lg-offset-1 col-lg-11">
                 <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>

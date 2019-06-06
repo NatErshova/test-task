@@ -15,6 +15,7 @@ class PointsForm extends Model
 {
     public $username;
     public $email;
+    public $id;
 
 
     /**

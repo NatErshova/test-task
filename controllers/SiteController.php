@@ -81,27 +81,30 @@ class SiteController extends Controller
         return $this->render('prize');
     }
 
-    public function actionMoney()
+    public function actionMoney($id)
     {
         $model = new MoneyForm();
         return $this->render('money', [
             'model' => $model,
+            'id' => $id,
         ]);
     }
 
-    public function actionPoints()
+    public function actionPoints($id)
     {
         $model = new PointsForm();
         return $this->render('points', [
             'model' => $model,
+            'id' => $id,
         ]);
     }
 
-    public function actionStuff()
+    public function actionStuff($id)
     {
         $model = new StuffForm();
         return $this->render('stuff', [
             'model' => $model,
+            'id' => $id,
         ]);
     }
 
