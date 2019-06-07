@@ -8,6 +8,7 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
+use app\models\SendForm;
 use app\models\Money;
 use app\models\Points;
 use app\models\Stuff;
@@ -145,6 +146,14 @@ class SiteController extends Controller
         $sum = $val * Yii::$app->params['coefConvert'];
         $category = 2;
         return $this->render('win', ['category' => $category, 'sum' => $sum]);
+    }
+
+    public function actionSendForm()
+    {
+        $model = new SendForm();
+        return $this->render('send-form', [
+            'model' => $model,
+        ]);
     }
 
     /**
