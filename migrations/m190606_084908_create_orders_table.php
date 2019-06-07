@@ -14,7 +14,6 @@ class m190606_084908_create_orders_table extends Migration
     {
         $this->createTable('{{%orders}}', [
             'id' => $this->primaryKey(),
-            'id_prize' => $this->integer(),
             'type_prize' => $this->string()->notNull(),
             'user_name' => $this->string()->notNull(),
             'description' => $this->string()->notNull(),
