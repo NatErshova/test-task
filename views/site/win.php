@@ -8,6 +8,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="jumbotron">
         <?php if ($category == 1) { ?>
             <h1 class="lead">You can get <?= $prize->val ?> rub!</h1>
+            <div class="jumbotron">
+                <a class="btn btn-lg btn-warning" href="<?=Url::to(['site/convert', 'val' => $prize->val])?>">I want to convert my money to loyalty points</a>
+            </div>
         <?php } elseif ($category == 2) { ?>
             <h1 class="lead">You can get <?= isset($prize->val) ? $prize->val : $sum ?> loyalty points!</h1>
         <?php } else { ?>
@@ -16,9 +19,4 @@ $this->params['breadcrumbs'][] = $this->title;
             <a class="btn btn-lg btn-success" href="#">Send me this prize</a>
             <a class="btn btn-lg btn-danger" href="<?=Url::to(['/'])?>">I don't want this prize</a>
     </div>
-    <?php if ($category == 1) { ?>
-        <div class="jumbotron">
-            <a class="btn btn-lg btn-warning" href="<?=Url::to(['site/convert', 'val' => $prize->val])?>">I want to convert my money to loyalty points</a>
-        </div>
-    <?php } ?>
 </div>
