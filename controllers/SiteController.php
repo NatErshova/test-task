@@ -8,9 +8,6 @@ use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
-use app\models\MoneyForm;
-use app\models\PointsForm;
-use app\models\StuffForm;
 use app\models\Money;
 use app\models\Points;
 use app\models\Stuff;
@@ -25,7 +22,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'prize', 'money', 'points', 'stuff'],
+                'only' => ['logout', 'prize', 'win'],
                 'rules' => [
                     [
                         'actions' => ['logout'],
@@ -38,17 +35,7 @@ class SiteController extends Controller
                         'roles' => ['@'],
                     ],
                     [
-                        'actions' => ['money'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['points'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                    [
-                        'actions' => ['stuff'],
+                        'actions' => ['win'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -153,38 +140,11 @@ class SiteController extends Controller
         return $stuff;
     }
 
-    public function actionMoney($id)
-    {
-        $model = new MoneyForm();
-        return $this->render('money', [
-            'model' => $model,
-            'id' => $id,
-        ]);
-    }
-
-    public function actionPoints($id)
-    {
-        $model = new PointsForm();
-        return $this->render('points', [
-            'model' => $model,
-            'id' => $id,
-        ]);
-    }
-
     public function actionConvert($val)
     {
         $sum = $val * Yii::$app->params['coefConvert'];
         $category = 2;
         return $this->render('win', ['category' => $category, 'sum' => $sum]);
-    }
-
-    public function actionStuff($id)
-    {
-        $model = new StuffForm();
-        return $this->render('stuff', [
-            'model' => $model,
-            'id' => $id,
-        ]);
     }
 
     /**
