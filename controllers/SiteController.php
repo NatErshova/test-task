@@ -171,15 +171,11 @@ class SiteController extends Controller
         ]);
     }
 
-    public function actionConvertPoints($id)
+    public function actionConvert($val)
     {
-        $model = new PointsForm();
-        $money = Money::findById($id);
-        $sum = $money->val * $money->coef;
-        return $this->render('convert-points', [
-            'model' => $model,
-            'sum' => $sum,
-        ]);
+        $sum = $val * Yii::$app->params['coefConvert'];
+        $category = 2;
+        return $this->render('win', ['category' => $category, 'sum' => $sum]);
     }
 
     public function actionStuff($id)

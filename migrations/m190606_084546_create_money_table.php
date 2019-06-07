@@ -16,7 +16,6 @@ class m190606_084546_create_money_table extends Migration
             'id' => $this->primaryKey(),
             'val' => $this->integer(),
             'amt' => $this->integer(),
-            'coef' => $this->float(),
         ]);
     }
 
